@@ -16,13 +16,13 @@ export function Header() {
 
   return (
     <Flex
-      as="header"
+      as="header" // Tag header .:. Mutação do HTML
       w="100%"
       maxWidth={1480}
       h="20"
-      mx="auto"
-      mt="4"
-      px="6"
+      mx="auto" // Margin horizontal
+      mt="4" // Margin top
+      px="6" // Padding horizontal
       align="center"
     >
       {!isWideVersion && (
@@ -39,7 +39,10 @@ export function Header() {
 
       {isWideVersion && <SearchBox />}
 
-      <Flex align="center" ml="auto">
+      <Flex
+        align="center"
+        ml="auto" // Margin left auto: dá o maior espaço para ser jogado ao máximo para a direita
+      >
         <NotificationsNav />
         <Profile showProfileData={isWideVersion} />
       </Flex>

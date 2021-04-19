@@ -1,3 +1,13 @@
+/**
+ * Funciona semelhante ao _app.tsx
+ * Para fazer carregamento de elementos ou assets apenas uma vez, como por exemplo,
+ * fontes usadas na aplicação.
+ *
+ * Semelhante à função do "public/index.html"
+ *
+ * <Main /> -> <div id="root"></div> -> Todo o conteúdo da aplicação será renderizado aqui
+ * <NextScript /> -> Loca onde o Next irá jogar os scripts que devem ser executados
+ */
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {

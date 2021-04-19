@@ -5,11 +5,15 @@ function Logo() {
     <Text
       fontSize={['2xl', '3xl']}
       fontWeight="bold"
-      letterSpacing="tight"
+      letterSpacing="tight" // Deixa as fontes um pouco mais grudadas (-0.025em)
       w="64"
     >
       DashGo
-      <Text as="span" ml="1" color="pink.500">
+      <Text
+        as="span" // Cria um span o HTML
+        ml="1" //Margin left 1
+        color="pink.500"
+      >
         .
       </Text>
     </Text>

@@ -62,7 +62,7 @@ function Dashboard() {
   return (
     <>
       <Head>
-        <title>Dashboard | DashGo</title>
+        <title>Dashboard | Dash-Go</title>
       </Head>
 
       <Flex direction="column" h="100vh">

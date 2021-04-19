@@ -2,6 +2,12 @@ import { HStack, Icon } from '@chakra-ui/react';
 import { RiNotificationLine, RiUserAddLine } from 'react-icons/ri';
 
 function NotificationsNav() {
+  /**
+   * O Stack por padrão é sempre vertical.
+   * Podemos passar a propriedade 'direction'
+   * Para encurtar isto, podeusar o 'HStack' - Horizontal Stack
+   * para que o itens fiquem um ao lado do outro
+   */
   return (
     <HStack
       spacing={['6', '8']}

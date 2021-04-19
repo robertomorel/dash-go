@@ -4,7 +4,7 @@ import { RiSearchLine } from 'react-icons/ri';
 function SearchBox() {
   return (
     <Flex
-      as="label"
+      as="label" // Será um label do HTML
       flex="1"
       py="4"
       px="8"
@@ -18,7 +18,7 @@ function SearchBox() {
     >
       <Input
         color="gray.50"
-        variant="unstyled"
+        variant="unstyled" // Para não ter borda e nem background
         placeholder="Buscar na plataforma"
         _placeholder={{ color: 'gray.400' }}
         px="4"
