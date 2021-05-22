@@ -29,70 +29,109 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## About 💻
 
-This is what the Serverless Architecture offers — It's built on next-generation public cloud services that auto-scale and charge only when used. When scale, capacity planning & cost management are automated, the result is software that's easier to build, maintain, and often up to 99% cheaper.
+This project simulates a users control application.
+Its been made during the course of ReactJS from RocketSeat Ignite 2021.
 
-But, Serverless Architectures are new and therefore require a shift in how we previously thought about architectures & workflows. Our goal at Serverless Inc. is to give developers, teams and orgs all of the tools they need to build and operate serverless applications, in one simple, powerful & elegant experience.
+It has a bunch of interesting features, like pagination; API builder with MirageJS; query runner with react-query; chakra-ui; and husky to easier run linter.
 
-- Event oriented architecture;
-- Small parts of a project;
+### Forms
+1. Controlled Components
+- Components where we can control their state
+- Basically when we monitor each typing of a person inside an input and save it in the state
+- This is the mostly used in smaller forms - with 1, 2, or 3 fields
+  - Because we store just few state info into the component
+- There is no performance problem in React at first
+- You must use the "debounce" concept
+  - So that the "setSearch" search is only called after the user stops typing (1s or 2s)
+  - Useful to use hook for this
 - Example:
-  - Image Register: creating events which only have to upload images to AWS S3
-- Doesn´t need a HTTP function to work
-- There is a implicit server, but we don´t have any concern about scaling it, configuring it, its infra or its needed containers.
-  - If we decide to use Amazon, for example, all those steps are made by the AWS available services.
+```jsx
+const [search, setSearch] = useState('')
+<input ...props value={search} onChange={event => setSearch(event.targe.value)} />
+```
 
-> Amazon API Gateway is responsible to mapped all routes using the URL in order to know exactly which function should be executed
+2. Uncontrolled Components
+- Way to access the value of the input only at the time we will need it
+- We do not store the value of each input in a state
+- We must use the reference of the inputs
+- `useRef` stores a ref. of the input inside the DOM (HTML element tree)
+  - Which type of element this <i>ref</i> belongs to (HTMLInputElement)
+- We can also normally use the <i>ref</i> to focus the input
+- Example:
+```jsx
+const searchInputRef = useRef<HTMLInputElement>(null)
+console.log(searchInputRef.current.value)
+if (true) searchInputRef.current.focus()
+<input ...props ref={searchInputRef} />
+```
 
-### Advantages
-- Lower cost
-- Practical e faster to build to a production
-- Only pay for usage
+3. <b>formik</b> library
+- To know more access the [link](formik.org)
 
-### Modules
-- BaaS => Backend as a Service
-  - Firebase
-- FaaS => Function as a Service
-  - AWS Lambda, Azure function, Google Cloud function
+4. <b>react-hook-form</b> library
+- To know more access the [link](react-hook-form.com)
+- We can continue using the standard react form components, using just a few hook methods to link the fields with the library
+  - We got more control of the fields
+  - Validations etc.
+- Based on the idea of Uncontrolled Components
 
-## Geting Started
-- Go the official documentation [here](https://www.serverless.com/examples/)!
+5. <b>unform</b> library
+- To know more access the [link](github.com/unform/unform)
+- Recommended for forms that are in need of high performance
+- Large forms
+- Based on the idea of Uncontrolled Components
+
+### Data Fetching
+Search for data of a backend or another hosted application
+
+> Ex.: fetch & axios
+
+Problem:
+- When we´re using `useEffect` and saving information inside a state, after the page be dropped, all data is deleted.
+- When the page is reopenned, the same data is reloaded again
+- Performance loss
+
+### Local Data Caching
+It´s possible to store the data from made requests into a cache of the application. When the data is needed again while a period of time (which the data has small chances of changing), these data can be salved and displayed effectively.
+
+- Increased effectiveness and usability
+- Data synchronizing with the "data syncing"
+- "React Query" tool
+  - SWR
+- MirageJS
+  - It gives a way to build a temporary API in cases of the non backend existence
+  - Could give fake data, by a known schema and pré-define models
+  - To initiate miragejs, run: `yarn install mirajejs -D`
+
+### React Query
+It creates a temporary cache whenever an HTTP request is made by BE
+
+- This cache is mapped from a few keys
+- Strategy: Stale While Revalidate
+- Keep cached in FE by the 'users' and {page} params keys
+
+## Geting Started ⚡
+- Go the Chacka-UI official documentation [here](https://chakra-ui.com/docs/getting-started)!
 
 ## Running the project 🚀
 
 - Clone the repo
 ```bash
-git clone https://github.com/robertomorel/degreecertificate.git
+git clone https://github.com/robertomorel/dash-go.git
 ```
 
-### Dependenties
-You have to inform your AWS credentials. For that, you need to create a new user on it.
-> Take down the <b>key</b> and <b>secret</b> from the register
-
-After that, you might wanna run the following command:
+- Run the application
 ```bash
-# "-o" is to overwrite anything
-serverless config credentials --provider aws --key=YOUR_KEY --secret YOUR_SECRET -o
-```
+# Installing dependencies
+yarn install
 
-A folter called <b>.aws</b> must be created on <b>~/Users/YOUR_USER/</b>
-> Look for the file "credentials"
-
-### Running localy
-```bash
-# Installing all dependencies
-yarn
-
-# Initiate
+# Run
 yarn dev
-
-# Initiate local DB
-yarn dynamo:start
 ```
 
-### Deploy
+- To run with higher performance
 ```bash
-# To upload the project to AWS Lambda
-yarn deploy
+yarn build && yarn start
 ```
 
 ## License 📄
