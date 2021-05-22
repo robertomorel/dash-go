@@ -7,6 +7,10 @@ type ProfileProps = {
 function Profile({ showProfileData }: ProfileProps) {
   /**
    * Box é uma div sem estilização
+   *
+   * Só irá mostrar o conteúdo do usuário de showProfileData for true,
+   * ou seja, se estiver no formato de tela larga (web)
+   * Este param foi settado pelo hook useBreakpointValue do Chakra
    */
   return (
     <Flex align="center">

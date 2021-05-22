@@ -2,8 +2,18 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Flex, SimpleGrid, Box, Text, theme } from '@chakra-ui/react';
 
+/**
+ * Quando carregamos uma página, o Next faz este carregamento do HTML pelo servidor BE
+ * que está rodando junto ao app, na camada intermediadora do Next.
+ * Nesta camada, que roda em um processo Node, não existe a referência Window.
+ *
+ * O Chart utiliza o Window, logo, precisamos que ele funciona apenas dentro do browser
+ * e não seja carregado no Next quando estiver fazendo o Server-Side Rendering
+ *
+ * Para isso, utilizamos o dynamic do Next, que é usando para lazy loading
+ */
 const Chart = dynamic(() => import('react-apexcharts'), {
-  ssr: false
+  ssr: false // Desliga o server-side rend.
 });
 
 import { Header, Sidebar } from '../components';
@@ -70,11 +80,30 @@ function Dashboard() {
         <Flex w="100%" my="6" maxWidth="1480" mx="auto" px="6">
           <Sidebar />
 
+          {/**
+           * Componente do Chakra para habilitar o uso de grid simples
+           *  flex="1" -> ocupar a largura que sobrar da side bar
+           *  gap="4" -> cada linha e coluna da grid terá um espaçamento de 16 px
+           *  minChildWidth="320px" -> todos os itens dentro da grid tem que ter, no mínimo 320px.
+           *                           Caso a tela diminua ainda mais, uma coluna vai para baixo (responsividade)
+           *  align="flex-start" -> iniciando conteúdo no início
+           */}
           <SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
-            <Box p={['6', '8']} bg="gray.800" borderRadius={8} pb="4">
+            <Box
+              p={['6', '8']} //Responsividade [mobile - web]
+              bg="gray.800"
+              borderRadius={8}
+              pb="4"
+            >
               <Text fontSize="lg" mb="4">
                 Inscritos da semana
               </Text>
+              {/**
+               * yarn add apexcharts react-apexcharts
+               * Chart biblioteca de gráficos
+               *  options -> configuraçõesdo gráfico
+               *  series -> dados do gráfico
+               */}
               <Chart
                 type="area"
                 height={160}

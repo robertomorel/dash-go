@@ -17,7 +17,7 @@ type getUsersResponse = {
   totalCount: number;
 };
 
-async function getUsers(page: number): Promise<getUsersResponse> {
+export async function getUsers(page: number): Promise<getUsersResponse> {
   const { data, headers } = await api.get<Data>('users', {
     params: {
       page
@@ -44,7 +44,13 @@ async function getUsers(page: number): Promise<getUsersResponse> {
 }
 
 export function useUsers(page: number) {
+  /**
+   * O react-query cria um cache temporário sempre que uma requisição HTTP é feita pelo BE
+   * Este cache é mapeado a partir de algumas chaves
+   * Estratégia: Stale While Revalidate
+   * Mantém em cache no FE pelas chaves(params) 'users' e {page}
+   */
   return useQuery(['users', page], () => getUsers(page), {
-    staleTime: 1000 * 60 * 10
+    staleTime: 1000 * 60 * 10 // Para dizer que durante este tempo, a aplicação não precisa fazer uma nova requisição HTTP, pois os dados estão "frescos"
   });
 }

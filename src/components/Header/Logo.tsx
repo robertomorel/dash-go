@@ -3,7 +3,7 @@ import { Text } from '@chakra-ui/react';
 function Logo() {
   return (
     <Text
-      fontSize={['2xl', '3xl']}
+      fontSize={['2xl', '3xl']} // Para trabalhar com a responsividade no Chacka
       fontWeight="bold"
       letterSpacing="tight" // Deixa as fontes um pouco mais grudadas (-0.025em)
       w="64"

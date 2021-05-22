@@ -18,13 +18,22 @@ const signInFormSchema = yup.object().shape({
 
 function SignIn() {
   const { register, handleSubmit, formState } = useForm<SignInFormData>({
+    // Forma do react-hook-form resolver situações de validação
     resolver: yupResolver(signInFormSchema)
   });
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async values => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+  // Modo de função de submit pelo react-hook-form
+  const handleSignIn: SubmitHandler<SignInFormData> = async (values, event) => {
+    // Aguarda 3s
+    await new Promise(resolve => setTimeout(resolve, 3000));
     // eslint-disable-next-line no-console
     console.log(values);
+    // eslint-disable-next-line no-console
+    console.log(event?.currentTarget);
+    // eslint-disable-next-line no-console
+    console.log(formState.isSubmitting);
+    // eslint-disable-next-line no-console
+    console.log(formState.errors);
   };
 
   return (
@@ -52,14 +61,14 @@ function SignIn() {
               type="email"
               label="E-mail"
               error={formState.errors.email}
-              {...register('email')}
+              {...register('email')} // Padrão do react-hook-form para controle de ref
             />
 
             <Input
               type="password"
               label="Senha"
               error={formState.errors.password}
-              {...register('password')}
+              {...register('password')} // Padrão do react-hook-form para controle de ref
             />
           </Stack>
 

@@ -9,6 +9,8 @@ import { useSidebarDrawer } from '../../contexts/SidebarDrawerContext';
 
 export function Header() {
   const { onOpen } = useSidebarDrawer();
+  // Hook do Chakra para controlar breakpoints na aplicação
+  // Se estiver na versão larga da tela (web)
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true

@@ -83,16 +83,22 @@ function CreateUser() {
           flex="1"
           borderRadius={8}
           bg="gray.800"
-          p={['6', '8']}
+          p={['6', '8']} //Responsividade [mobile - web]
           onSubmit={handleSubmit(handleCreateUser)}
         >
           <Heading size="lg" fontWeight="normal">
             Criar usuário
           </Heading>
 
+          {/** Linha para dividir dois conteúdos */}
           <Divider my="6" borderColor="gray.700" />
 
           <VStack spacing="8">
+            {/**
+             * Componente do Chakra para habilitar o uso de grid simples, facilitando responsividade
+             *  minChildWidth="240px" -> todos os itens dentro da grid tem que ter, no mínimo 320px.
+             *                           Caso a tela diminua ainda mais, uma coluna vai para baixo (responsividade)
+             */}
             <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
               <Input
                 type="text"

@@ -46,4 +46,5 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   );
 };
 
+// Utilizado para fazer o encaminhamento da ref
 export const Input = forwardRef(InputBase);

@@ -10,9 +10,9 @@ function NotificationsNav() {
    */
   return (
     <HStack
-      spacing={['6', '8']}
-      mx={['6', '8']}
-      pr={['6', '8']}
+      spacing={['6', '8']} // Para trabalhar com a responsividade no Chacka (Mobile, Web)
+      mx={['6', '8']} // Para trabalhar com a responsividade no Chacka (Mobile, Web)
+      pr={['6', '8']} // Para trabalhar com a responsividade no Chacka (Mobile, Web)
       py="1"
       color="gray.300"
       borderRightWidth={1}

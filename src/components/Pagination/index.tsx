@@ -11,6 +11,10 @@ type PaginationProps = {
 const siblingsCount = 1;
 
 function generatePagesArray(from: number, to: number) {
+  /**
+   * Se entrada é [2, 5]
+   * Saída é [3, 4, 5]
+   */
   return [...new Array(to - from)]
     .map((_, index) => {
       return from + index + 1;
@@ -39,7 +43,7 @@ export function Pagination({
 
   return (
     <Stack
-      direction={['column', 'row']}
+      direction={['column', 'row']} //Responsividade [mobile - web]
       mt="8"
       justify="space-between"
       align="center"

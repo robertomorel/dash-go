@@ -9,6 +9,11 @@ import {
 import NavSection from './NavSection';
 import NavLink from './NavLink';
 
+/**
+ * Stack é um elemento de navegação
+ *    align="flex-start" -> para alinhar todo o conteúdo do Stack para a esq.
+ *
+ */
 function SidebarNav() {
   return (
     <Stack spacing="12" align="flex-start">

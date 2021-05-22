@@ -28,7 +28,13 @@ import { api } from '../../services/api';
 function UserList() {
   const [page, setPage] = useState(1);
   const router = useRouter();
-  const { data, isLoading, isFetching, error } = useUsers(page);
+  const {
+    data,
+    isLoading,
+    isFetching /* Informa que os dados estão sendo renovados */,
+    /*refetch  Para renovar os dados carregados ,*/
+    error
+  } = useUsers(page);
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true
@@ -92,7 +98,11 @@ function UserList() {
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th px={['4', '4', '6']} color="gray.600" width="8">
+                    <Th
+                      px={['4', '4', '6']} //Responsividade [mobile - tablet - web]
+                      color="gray.600"
+                      width="8"
+                    >
                       <Checkbox colorScheme="pink" />
                     </Th>
                     <Th>Usuário</Th>
@@ -107,7 +117,11 @@ function UserList() {
                 <Tbody>
                   {data?.users.map(user => (
                     <Tr key={user.id}>
-                      <Td px={['4', '4', '6']} color="gray.600" width="8">
+                      <Td
+                        px={['4', '4', '6']} //Responsividade [mobile - tablet - web]
+                        color="gray.600"
+                        width="8"
+                      >
                         <Checkbox colorScheme="pink" />
                       </Td>
                       <Td>
