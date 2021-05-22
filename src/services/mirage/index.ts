@@ -20,6 +20,10 @@ type User = {
 export function makeServer() {
   // Cria um servidor
   const server = createServer({
+    /**
+     * ActiveModelSerializer: para mandar e receber requisições com dados de relacionamento num mesmo envio.
+     * Cadastrar user com relacionamento: {name: 'Roberto', email: 'email@email.com', address: {street: 'r1', num: '1'}}
+     */
     serializers: {
       application: ActiveModelSerializer
     },

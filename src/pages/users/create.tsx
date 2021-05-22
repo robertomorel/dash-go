@@ -40,6 +40,7 @@ const createUserSchema = yup.object().shape({
 
 function CreateUser() {
   const router = useRouter();
+  // Recurso do reqct-query para criar/alterar/deletar coisas na API
   const createUser = useMutation(
     async (user: CreateUserData) => {
       const response = await api.post('users', {
@@ -53,6 +54,7 @@ function CreateUser() {
     },
     {
       onSuccess: () => {
+        // Invalida o cache que já existe da listagem de usuários
         queryClient.invalidateQueries('users');
       }
     }
@@ -64,6 +66,7 @@ function CreateUser() {
 
   const handleCreateUser: SubmitHandler<CreateUserData> = async values => {
     await createUser.mutateAsync(values);
+    // Envia o usuário de volta para a tela users
     router.push('/users');
   };
 

@@ -49,6 +49,7 @@ export function useUsers(page: number) {
    * Este cache é mapeado a partir de algumas chaves
    * Estratégia: Stale While Revalidate
    * Mantém em cache no FE pelas chaves(params) 'users' e {page}
+   *    Se uma dessas chaves mudar, os dados são recarregados
    */
   return useQuery(['users', page], () => getUsers(page), {
     staleTime: 1000 * 60 * 10 // Para dizer que durante este tempo, a aplicação não precisa fazer uma nova requisição HTTP, pois os dados estão "frescos"

@@ -40,6 +40,11 @@ function UserList() {
     lg: true
   });
 
+  /**
+   * O prefetch faz os dados armazenados em cache antes destes estarem em tela
+   * Adicionamos a rota "this.get('/users/:id');" no mirage para encontrar um user pelo ID
+   * Os dados estarão em cache por 10 min
+   */
   const handlePrefetchUser = useCallback(async (userId: string) => {
     await queryClient.prefetchQuery(
       ['user', userId],
