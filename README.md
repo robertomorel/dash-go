@@ -6,7 +6,9 @@
   <img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/robertomorel/dash-go?color=ff512f&style=flat-square">
 </p>
 
-
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+</p>
 
 ----
 
