@@ -24,7 +24,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [NextJS](https://nextjs.org/docs)
 - [Axios](https://github.com/axios/axios)
 - [Web Hook](https://nextjs.org/docs/basic-features/data-fetching)
-- [Chakra](https://chakra-ui.com/docs/getting-started)
+- [Chakra UI](https://chakra-ui.com/docs/getting-started)
 - [Mirage](https://miragejs.com/docs/getting-started/introduction/)
 
 ## About 💻
@@ -34,8 +34,54 @@ Its been made during the course of ReactJS from RocketSeat Ignite 2021.
 
 It has a bunch of interesting features, like pagination; API builder with MirageJS; query runner with react-query; chakra-ui; and husky to easier run linter.
 
+### Declarative Interface
+- It uses [Theme UI](https://theme-ui.com/home/)
+- When we can define the styles directly by the jsx tag
+- Example:
+```jsx
+export default {
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: 'tomato',
+  },
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: '"Avenir Next", sans-serif',
+  },
+}
+
+/** @jsxImportSource theme-ui */
+export default (props) => (
+  <h1
+    sx={{
+      color: 'primary',
+      fontFamily: 'heading',
+    }}>
+    Hello
+  </h1>
+)
+```
+
+#### 1. [Tailwindcss](tailwindcss.com)
+- Define the styles from classes
+
+#### 2. [Chakra UI](chakra-ui.com)
+Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.
+- It joins the declarative interface with accessibility
+- Integrates by default with Framer Motion (to make animations)
+  - Very popular animation library
+- To getting started on Chakra UI
+```console
+yarn create next-app NAME_OF_PROJECT
+
+& cd /NAME_OF_PROJECT
+
+& yarn add @chakra-ui/react @chakra-ui/core @emotion/react @emotion/styled framer-motion
+```
+
 ### Forms
-1. Controlled Components
+#### 1. Controlled Components
 - Components where we can control their state
 - Basically when we monitor each typing of a person inside an input and save it in the state
 - This is the mostly used in smaller forms - with 1, 2, or 3 fields
@@ -50,7 +96,7 @@ const [search, setSearch] = useState('')
 <input ...props value={search} onChange={event => setSearch(event.targe.value)} />
 ```
 
-2. Uncontrolled Components
+#### 2. Uncontrolled Components
 - Way to access the value of the input only at the time we will need it
 - We do not store the value of each input in a state
 - We must use the reference of the inputs
@@ -65,17 +111,17 @@ if (true) searchInputRef.current.focus()
 <input ...props ref={searchInputRef} />
 ```
 
-3. <b>formik</b> library
+#### 3. <b>formik</b> library
 - To know more access the [link](formik.org)
 
-4. <b>react-hook-form</b> library
+#### 4. <b>react-hook-form</b> library
 - To know more access the [link](react-hook-form.com)
 - We can continue using the standard react form components, using just a few hook methods to link the fields with the library
   - We got more control of the fields
   - Validations etc.
 - Based on the idea of Uncontrolled Components
 
-5. <b>unform</b> library
+#### 5. <b>unform</b> library
 - To know more access the [link](github.com/unform/unform)
 - Recommended for forms that are in need of high performance
 - Large forms
